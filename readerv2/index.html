@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF.js Single Page Viewer</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+        }
+        #pdf-viewer {
+            width: 1024px; /* Adjust this value as needed */
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        #pdf-canvas {
+            border: 1px solid red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        #cropper-canvas {
+            border: 1px solid red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .navigation-controls {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="pdf-viewer">
+            <canvas id="pdf-canvas"></canvas>
+            <canvas id="cropper-canvas"></canvas>
+        </div>
+        <div class="navigation-controls">
+            <button id="prev-page">Previous</button>
+            <span>Page: <span id="page-num"></span> / <span id="page-count"></span></span>
+            <button id="next-page">Next</button>
+        </div>
+        <button id="exportBtn">Export Crop Dimensions</button>
+        <div id="output"></div>
+    </div>
+
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
